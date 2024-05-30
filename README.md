@@ -1,6 +1,6 @@
-# Redux Toolkit Practice App
+# Redux Toolkit Data Fetching Practice App
 
-This is a combined solution to [Redux Toolkit Tutorial – JavaScript State Management Library Project](https://www.youtube.com/watch?v=bbkBuqC1rU4) and [Redux - Complete Tutorial (with Redux Toolkit) Project](https://www.youtube.com/watch?v=5yEG6GhoJBs&t=1s). I'm practicing and developing my coding competency by building projects after projects.
+This is a solution to [Mastering Redux Toolkit and RTK Query: A Comprehensive Course for State Management & Data Fetching Project](ttps://www.youtube.com/watch?v=CI8VeG0GI-M&t=157s). I'm practicing and developing my coding competency by building projects after projects.
 
 ## Table of contents
 
@@ -20,9 +20,7 @@ This is a combined solution to [Redux Toolkit Tutorial – JavaScript State Mana
 
 ### The Challenge/User Stories
 
-Learn how to use Redux Toolkit in this course for beginners. Redux Toolkit is from the Redux team and it is intended to be the standard way to write Redux logic. So if you want to learn Redux to help with state management, this is the video for you.
-
-In this video we will learn about Redux and Redux Toolkit. Redux is a state management library that makes it really easy to have global state in your React application. We are going to learn how to work with modern Redux, using Redux Toolkit to save ourselves some boilerplate code. This is the last video you will ever have to watch on Redux with Redux Toolkit! Enjoy!
+RTK Query Fundamentals: Explore the powerful capabilities of RTK Query for efficient data fetching in React. Understand how to simplify API calls, manage loading states, and handle caching seamlessly.
 
 ### Screenshot
 
@@ -30,8 +28,8 @@ In this video we will learn about Redux and Redux Toolkit. Redux is a state mana
 
 ### Links
 
-- Solution URL: [https://github.com/traez/redux-toolkit-practice-app](https://github.com/traez/redux-toolkit-practice-app)
-- Live Site URL: [https://redux-toolkit-practice-app-trae-zeeofors-projects.vercel.app/](https://redux-toolkit-practice-app-trae-zeeofors-projects.vercel.app/)
+- Solution URL: [https://github.com/traez/redux-toolkit-data-fetching](https://github.com/traez/redux-toolkit-data-fetching)
+- Live Site URL: [https://redux-toolkit-data-fetching-trae-zeeofors-projects.vercel.app/](https://redux-toolkit-data-fetching-trae-zeeofors-projects.vercel.app/)
 
 ## My process
 
@@ -52,29 +50,27 @@ In this video we will learn about Redux and Redux Toolkit. Redux is a state mana
 
 ### What I learned
  
-- **Redux** itself is a standalone JavaScript library for managing application state. Redux is not specific to React and can be used with various frontend frameworks.  
-- To get started, install ``@reduxjs/toolkit` and `react-redux`.  
-- `useSelector` in Redux Toolkit and `useContext` in the Context API both allow React components to access state. `useSelector` extracts specific parts of the Redux state with a selector function, optimizing performance by re-rendering only when the selected state changes. `useContext` provides the entire context value, which can lead to less efficient updates if the context changes frequently. Redux Toolkit supports complex state management with middleware and enhancers, making it suitable for larger applications. The Context API is best for simpler state management needs. Choose Redux for advanced features and Context for straightforward state sharing.
-- `useDispatch` is a hook provided by the `react-redux` library that allows functional React components to interact with the Redux store by dispatching actions. `useDispatch` is essential for interacting with the Redux store from within your React components, enabling you to update the state based on user actions or other events.
-- **Payloads** in Redux Toolkit serve a similar purpose to arguments in functions. They provide the data needed to perform an operation or update.  
-- **Actions** are used to tell Redux what it should do to the state. They are plain JavaScript objects that signal events or changes to the application state (e.g., increment, decrement, incrementByAmount). They act as messengers, carrying information from your components to the Redux store, which triggers updates to the state based on the action type. Actions in Redux Toolkit are automatically generated when using `createSlice`.  
-Action Creators are functions that return an action object.  
-Action Types are constants that represent the action.  
-Dispatching Actions is done using the dispatch function in your components.  
-- **Reducers** take action and get the job done in the Redux store. They also use payload if provided. Reducers never directly mutate the state. They make a copy of the state, change the copy, and then make the copy the new permanent state, just like in `useState`.  
-- `createSlice` in Redux Toolkit, as the name implies, creates slices (manageable pieces) of state in your Redux app. It reduces boilerplate by auto-generating action types and creators. It simplifies reducers with the Immer library for easier, immutable updates. It takes initial state, slice name, and reducer functions as input and outputs a slice object with actions and a reducer for the slice.
-- `extraReducers` in Redux Toolkit is an optional configuration within `createSlice`. It lets you handle actions from outside the slice. It's useful for handling actions from thunks (async logic) or other slices. It takes a function that receives a builder object. The builder provides methods like `addCase` to define reducers for specific actions. It enables responding to async actions like `pending`, `fulfilled`, and `rejected` from `createAsyncThunk`.
-- The **"builder"** in Redux Toolkit refers to an object passed to functions like `createReducer` and used within `extraReducers` of `createSlice`. It provides methods to define how reducers handle actions. It offers functions like:  
-`addCase` (Creates a reducer for a specific action type)  
-`addMatcher` (Creates a reducer that matches actions based on a custom function)  
-`addDefaultCase` (Defines a catch-all reducer for unmatched actions)  
-It enables a builder pattern for clear and concise reducer logic and is often used with Immer for easier and safer state updates.
-- `addCase` in Redux Toolkit is used within `createReducer` or `extraReducers` (of `createSlice`). It defines a reducer function for a specific exact action type. It takes two arguments (listed below) and It's key for handling specific actions and updating state accordingly:  
-The action creator function (or action type string) to handle.  
-The reducer function that updates state based on the action's payload.  
-- **Todo**: Learn in depth how to set up and use Redux Toolkit's "**RTK Query**" data fetching functionality.
-Tutorial link: https://redux-toolkit.js.org/tutorials/rtk-query
-Project link: Frontend Mentor Clock app https://www.frontendmentor.io/challenges/clock-app-LMFaxFwrM  
+- **createApi**: This function is used to define an API slice in your Redux store. It simplifies setting up API endpoints, managing caching, and handling side effects like loading states and errors.
+- **fetchBaseQuery**: This utility function creates a base query function for your API. It uses the Fetch API to make HTTP requests, similar to Axios or other request libraries but tailored to work seamlessly with Redux Toolkit. 
+- **reducerPath**: This specifies the key ("products") under which this API slice's reducer will be named and stored in the Redux store (also known as the slice's name). This helps organize and access the state and state updates managed by this slice. 
+- **baseQuery**: This property defines the base query function used for making API requests in your API slice.  
+- **fetchBaseQuery**: Here, the value assigned to baseQuery is fetchBaseQuery. This is a helper function provided by `@reduxjs/toolkit/query/react`. It simplifies making API requests by leveraging the built-in Fetch API. 
+- **baseUrl**: "https://dummyjson.com": This is an object passed as an argument to fetchBaseQuery. It configures the base URL for your API endpoint. In this case, it's set to "https://dummyjson.com". Any API requests made within your defined endpoints will use this base URL as the starting point.
+- **endpoints**: This property in the API slice configuration object `(createApi({ ... }))` defines the actual API calls (endpoints) your application will use for interacting with product data. 
+- **(builder) => ({ ... })**: This is a builder function provided by createApi. It allows you to create multiple endpoints within your API slice.  
+- **getAllProduct**: This line defines a specific endpoint named getAllProduct. It represents an API call to retrieve all products from your backend API. 
+- **builder.query**: This method from the builder function is used to define a query endpoint. Query endpoints typically involve GET requests to fetch data.
+- **{ query: () => "/products" }**: This object defines the details of the getAllProduct endpoint. The property specifies the function that constructs the query for the API request. In this case, it's a simple arrow function that returns the URL path `/products`. This indicates that the endpoint uses a GET request to retrieve all products from the `/products` endpoint of your API (assuming the base URL is set in the baseQuery configuration). 
+- **{ useGetAllProductQuery }**: This is a destructuring assignment that extracts useGetAllProductQuery from the productsApi object. Destructuring is a convenient way to unpack values from objects or arrays into distinct variables. 
+- **import { setupListeners } from "@reduxjs/toolkit/query"**: This import brings in the setupListeners utility from Redux Toolkit Query. This utility enhances the store setup by adding the ability to automatically re-fetch data based on certain conditions, such as when the user focuses on the window or reconnects to the internet. 
+- **import { productsApi } from "./dummyData"**: This line imports the productsApi object, likely defined in a file named dummyData.js (not shown here). It assumes you've already created the productsApi slice using createApi as explained earlier.
+- **[productsApi.reducerPath]: productsApi.reducer** dynamically assigns the productsApi reducer to the Redux store under the key specified by productsApi.reducerPath. This enables the store to manage state for the productsApi slice, which includes handling API data, caching, and other related functionalities provided by Redux Toolkit Query. 
+- **middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(productsApi.middleware)**: This configures the middleware for your Redux store by integrating the middleware specific to the productsApi slice. This middleware enables your application to handle API calls, manage loading states and errors, and update the store with fetched data for product management within your React application using Redux Toolkit Query.
+- **setupListeners(store.dispatch)**: This line is vital for enabling data fetching in your Redux Toolkit application using RTK Query. It sets up listeners for API endpoints defined in your slices, allowing components to interact with them using hooks and managing the underlying data fetching logic seamlessly within your store. 
+- The **AllProducts** functional component: This component fetches and displays a list of products using the useGetAllProductQuery hook generated by Redux Toolkit Query. It handles three main states: loading, error, and success. When the data is still being fetched (isLoading), it displays a loading message. If there's an error during the fetch (isError), it shows an error message. Once the data is successfully fetched, it maps through the products array from the fetched data and renders each product's title and description. The fetched data and state variables (data, isError, isLoading) are logged to the console and used to conditionally render appropriate content based on the fetch state.
+- **Warning: Each child in a list should have a unique "key" prop**: This is a standard React rule. When you use a React fragment (<>...</>) in .map, you'll get this error because the fragment is the outermost element. Add the "key" prop to the fragment or replace the fragment with a div where you can then add the "key" prop.
+- The **AddNewProduct** functional component: This component allows users to add a new product. It uses the useAddNewProductMutation hook (likely from `../reduxtk/dummyData.js`) to interact with a Redux Toolkit Query mutation endpoint for adding products. The component handles error and loading states while providing a button to trigger product creation. It attempts to render the newly added product's details (ID, title, description) based on the response data received from the mutation. However, the provided ID (419) might be overridden by a unique ID assigned by the backend during creation. This was confirmed on Postman where the backend returned 195 from a POST request.
+- The **UpdateProduct** component: This React functional component allows users to update the details of a specific product by providing a form with fields for the product's title, price, stock, and rating. It uses state variables to manage the input values and leverages the useUpdateProductMutation hook from dummyData to send the updated product data to the server. When the form is submitted, the handleUpdateProduct function constructs an object with the updated details and sends it to the server. The component displays a loading message while the update is in progress and shows the updated product information once the update is successful. 
 
 ### Continued development
 
