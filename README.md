@@ -1,6 +1,6 @@
 # Redux Toolkit Data Fetching Practice App
 
-This is a solution to [Mastering Redux Toolkit and RTK Query: A Comprehensive Course for State Management & Data Fetching Project](ttps://www.youtube.com/watch?v=CI8VeG0GI-M&t=157s). I'm practicing and developing my coding competency by building projects after projects.
+This is a solution to [Mastering Redux Toolkit and RTK Query: A Comprehensive Course for State Management & Data Fetching Project](https://www.youtube.com/watch?v=CI8VeG0GI-M&t=157s). I'm practicing and developing my coding competency by building projects after projects.
 
 ## Table of contents
 
